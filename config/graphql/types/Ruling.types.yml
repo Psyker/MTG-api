@@ -1,0 +1,8 @@
+Ruling:
+  type: object
+  config:
+    fields:
+      date:
+        type: String
+      text:
+        type: String

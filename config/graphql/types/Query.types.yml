@@ -1,0 +1,22 @@
+Query:
+  type: object
+  config:
+    fields:
+      cards:
+        description: Get all cards.
+        type: '[Card]'
+        resolve: '@=resolver("App\\GraphQL\\Resolver\\Card\\CardsResolver", [args])'
+        args:
+          page:
+            type: Int
+            defaultValue: 1
+          pageSize:
+            type: Int
+            defaultValue: 30
+      card:
+        description: Get card by its multiverse ID.
+        type: Card
+        resolve: '@=resolver("App\\GraphQL\\Resolver\\Card\\CardResolver", [args])'
+        args:
+          multiverseId:
+            type: Int!

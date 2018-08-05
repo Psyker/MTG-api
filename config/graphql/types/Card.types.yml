@@ -1,0 +1,59 @@
+Card:
+  type: object
+  config:
+    resolveField: '@=resolver("App\\GraphQL\\Resolver\\Card\\CardMagicValueResolver", [value, info])'
+    fields:
+      name:
+        type: String
+      manaCost:
+        type: String
+      cmc:
+        type: Int
+      colors:
+        type: '[String]'
+      colorIdentity:
+        type: '[String]'
+      type:
+        type: String
+      types:
+        type: '[String]'
+      subtypes:
+        type: '[String]'
+      rarity:
+        type: String
+      set:
+        type: String
+      setName:
+        type: String
+      text:
+        type: String
+      flavor:
+        type: String
+      artist:
+        type: String
+      number:
+        type: String
+      power:
+        type: String
+      toughness:
+        type: String
+      layout:
+        type: String
+      multiverseid:
+        type: Int
+      imageUrl:
+        type: String
+      watermark:
+        type: String
+      rulings:
+        type: '[Ruling]'
+      printings:
+        type: '[String]'
+      originalText:
+        type: String
+      originalType:
+        type: String
+      legalities:
+        type: '[Legality]'
+      id:
+        type: String

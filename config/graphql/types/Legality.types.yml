@@ -1,0 +1,8 @@
+Legality:
+  type: object
+  config:
+    fields:
+      format:
+        type: String
+      legality:
+        type: String
