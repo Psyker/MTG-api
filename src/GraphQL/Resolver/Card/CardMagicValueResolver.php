@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\GraphQL\Resolver\Card;
-
 
 use GraphQL\Type\Definition\ResolveInfo;
 use mtgsdk\Card;

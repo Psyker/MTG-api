@@ -13,10 +13,26 @@ Query:
           pageSize:
             type: Int
             defaultValue: 30
+          name:
+            type: String
+          colors:
+            type: String
+          types:
+            type: String
+          subtypes:
+            type: String
       card:
-        description: Get card by its multiverse ID.
+        description: Get ca specific card.
         type: Card
         resolve: '@=resolver("App\\GraphQL\\Resolver\\Card\\CardResolver", [args])'
         args:
           multiverseId:
-            type: Int!
+            type: Int
+          name:
+            type: String
+          colors:
+            type: String
+          types:
+            type: String
+          subtypes:
+            type: String
