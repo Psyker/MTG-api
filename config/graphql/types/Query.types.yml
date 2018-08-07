@@ -4,7 +4,7 @@ Query:
     fields:
       cards:
         description: Get all cards.
-        type: '[Card]'
+        type: 'CardsPage'
         resolve: '@=resolver("App\\GraphQL\\Resolver\\Card\\CardsResolver", [args])'
         args:
           page:
@@ -22,17 +22,9 @@ Query:
           subtypes:
             type: String
       card:
-        description: Get ca specific card.
+        description: Get a specific card.
         type: Card
         resolve: '@=resolver("App\\GraphQL\\Resolver\\Card\\CardResolver", [args])'
         args:
           multiverseId:
-            type: Int
-          name:
-            type: String
-          colors:
-            type: String
-          types:
-            type: String
-          subtypes:
-            type: String
+            type: Int!

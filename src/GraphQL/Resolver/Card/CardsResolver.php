@@ -18,8 +18,8 @@ class CardsResolver implements ResolverInterface
         $this->cardSearch = $cardSearch;
     }
 
-    public function __invoke(Argument $args)
+    public function __invoke(Argument $args): array
     {
-        return $this->cardSearch->search($args);
+        return $this->cardSearch->searchAll($args);
     }
 }

@@ -11,12 +11,22 @@ class CardSearch
 {
     /**
      * @param Argument $args
-     * @return array|Card
+     * @return Card|null
      */
-    public function search(Argument $args): array
+    public function searchOne(Argument $args): ?Card
     {
-        [$multiverseId, $name, $colors, $types, $subtypes, $page, $pageSize] = [
-            $args->offsetGet('multiverseId'),
+        $multiverseId = $args->offsetGet('multiverseId');
+
+        return Card::find($multiverseId);
+    }
+
+    /**
+     * @param Argument $args
+     * @return Card[]|array
+     */
+    public function searchAll(Argument $args): array
+    {
+        [$name, $colors, $types, $subtypes, $page, $pageSize] = [
             $args->offsetGet('name'),
             $args->offsetGet('colors'),
             $args->offsetGet('types'),
@@ -25,10 +35,12 @@ class CardSearch
             $args->offsetGet('pageSize')
         ];
 
-        if ($multiverseId) {
-            return [Card::find($multiverseId)];
-        }
+        ++$pageSize;
 
-        return Card::where(compact('name', 'colors', 'types', 'subtypes', 'page', 'pageSize'))->all();
+        $items = Card::where(compact('name', 'colors', 'types', 'subtypes', 'page', 'pageSize'))->all();
+        $hasMore = isset($items[$pageSize - 1]);
+        unset($items[$pageSize - 1]);
+
+        return compact('items', 'hasMore') ;
     }
 }

@@ -1,0 +1,9 @@
+CardsPage:
+  type: object
+  config:
+    fields:
+      items:
+        type: '[Card]'
+      hasMore:
+        type: Boolean!
+

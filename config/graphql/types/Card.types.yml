@@ -56,4 +56,5 @@ Card:
       legalities:
         type: '[Legality]'
       id:
-        type: String
+        type: ID!
+        resolve: '@=resolver("App\\GraphQL\\Resolver\\Card\\CardIdResolver", [value])'
