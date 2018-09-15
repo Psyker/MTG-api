@@ -23,6 +23,7 @@ Card:
         type: String
       set:
         type: String
+        resolve: '@=resolver("App\\GraphQL\\Resolver\\Card\\CardSetResolver", [value])'
       setName:
         type: String
       text:
@@ -55,6 +56,11 @@ Card:
         type: String
       legalities:
         type: '[Legality]'
+      releaseDate:
+        type: String
+      slug:
+        type: String
+        resolve: '@=resolver("App\\GraphQL\\Resolver\\Card\\CardSlugResolver", [value])'
       id:
         type: ID!
         resolve: '@=resolver("App\\GraphQL\\Resolver\\Card\\CardIdResolver", [value])'
