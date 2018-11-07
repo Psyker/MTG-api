@@ -4,6 +4,7 @@
 namespace App\Search;
 
 
+use GraphQL\Error\UserError;
 use mtgsdk\Card;
 use Overblog\GraphQLBundle\Definition\Argument;
 
@@ -15,9 +16,29 @@ class CardSearch
      */
     public function searchOne(Argument $args): ?Card
     {
-        $multiverseId = $args->offsetGet('multiverseId');
+        [$multiverseId, $set, $name, $number] = [
+            $args->offsetGet('multiverseId'),
+            $args->offsetGet('set'),
+            $args->offsetGet('name'),
+            $args->offsetGet('number')
+        ];
 
-        return Card::find($multiverseId);
+        if ($multiverseId) {
+            return Card::find($multiverseId);
+        }
+
+        if (!$set || !$name || !$number) {
+            throw new UserError('You must either supply a multiverse ID, or a set and slug and a card number');
+        }
+
+        return $this->findOneby(compact('set', 'name', 'number'));
+    }
+
+    public function findOneby(array $arguments)
+    {
+        $all = Card::where($arguments)->all();
+
+        return \count($all) > 0 ? $all[0] : null;
     }
 
     /**

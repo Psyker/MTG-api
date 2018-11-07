@@ -27,4 +27,10 @@ Query:
         resolve: '@=resolver("App\\GraphQL\\Resolver\\Card\\CardResolver", [args])'
         args:
           multiverseId:
-            type: Int!
+            type: Int
+          set:
+            type: String
+          number:
+            type: String
+          name:
+            type: String
